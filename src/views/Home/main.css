@@ -1,0 +1,64 @@
+html, body, #root {
+    height: 100%;
+}
+body {
+    margin: 0 !important;
+}
+.but_launch {
+    height: 30px;
+}
+.but_screen_hover {
+    display:none !important;
+}
+.hbutton {
+    color:white !important;
+    transform-origin:0 0;
+    position: absolute;
+    top:84%;
+    left:-10%;
+}
+.vbutton {
+    color:white !important;
+    transform-origin: 0 0;
+    position: absolute;;
+   top: 80%;
+    left:-145px;
+}
+.Btn
+ {  
+    color: white !important;
+    transform-origin: 0 0;
+    transform: rotate(270deg);
+    position: absolute;
+    top: 50%;
+    width:140px;
+    background-color: rgb(14, 105, 241) !important;
+
+ }
+ .Btn::after {
+    content: "";
+    position: absolute;
+    left: 102%;
+    top: 0%;
+    margin-left: -5px;
+    border-width: 18px;
+    border-style: solid;
+    border-color: rgb(14, 105, 241) transparent transparent rgb(14, 105, 241);
+ }
+ .Btn::before {
+    content: "";
+    position: absolute;
+    left: 0%;
+    top: 0%;
+    margin-left: -34px;
+    border-width: 18px;
+    border-style: solid;
+    border-color: rgb(14, 105, 241) rgb(14, 105, 241) transparent transparent ;
+ }
+ .workstation {
+     height: auto;
+     padding:0 20px 0 60px;
+ }
+
+ 
+ 
