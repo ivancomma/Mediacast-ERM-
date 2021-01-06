@@ -45,7 +45,7 @@ class Screen5App extends React.Component {
         return (
             <div>
                 <Splitter
-                    style={{ height: 750 }}
+                    style={{ height: 810 }}
                     panes={this.state.verticalPanes}
                     orientation={'vertical'}
                     onChange={this.onVerticalChange}

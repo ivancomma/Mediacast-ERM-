@@ -35,7 +35,7 @@ class Screen1App extends React.Component {
                         <h3>Main content</h3>
                         <p>this is second part.</p>
                     </div>
-                    
+
                 </Splitter>
             </div>
         );

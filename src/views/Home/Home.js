@@ -5,13 +5,16 @@ import { Button, ButtonGroup } from '@material-ui/core';
 
 
 import { makeStyles } from '@material-ui/core/styles';
+import { Window } from '@progress/kendo-react-dialogs';
 import './main.css';
 
-import ExpandApp from './ExpandApp.js';
+import ExpandApp from './Expand.js';
+import ExpandTreeApp from './ExpandTree.js';
+import ScreenHomeApp from '../Screen/ScreenHome.js';
 import Screen1App from '../Screen/Screen1.js';
-import Screen2App from '../Screen/Screen4.js';
+import Screen2App from '../Screen/Screen2.js';
 import Screen3App from '../Screen/Screen3.js';
-import Screen4App from '../Screen/Screen2.js';
+import Screen4App from '../Screen/Screen4.js';
 import Screen5App from '../Screen/Screen5.js';
 
 import screen1img from '../../asset/image/screen1.jpg';
@@ -35,6 +38,8 @@ export default function Home() {
   const history = useHistory();
   const classes = useStyles();
   const [visible, setVisible] = useState(0);
+  const [expand, setExpand] = useState();
+  let treeData = 0;
   function handleClick(param) {
     console.log("aaaaaaa");
     if (param === 'app') {
@@ -67,6 +72,10 @@ export default function Home() {
       setVisible(5);
     }
   }
+  function changeExpandWindow(key){
+    treeData = key;
+    setExpand(<ExpandTreeApp data={key}/>);
+  }
   return (
     <div style={{ height: "100%" }}>
       <div className={classes.root}>
@@ -75,7 +84,9 @@ export default function Home() {
         Lanuch
         </Button> */}
         <ButtonGroup>
-          <ExpandApp/>
+          <ExpandApp changeExpandWindow={changeExpandWindow.bind(this)}/>
+          
+          {/* <ExpandTreeApp/> */}
           <Button variant="contained" color="secondary" 
             className='butsplit'
             onClick={() => hoverChange('click')} 
@@ -95,6 +106,7 @@ export default function Home() {
           <Button onClick={() => screenChange('fourth')}><img src={screen4img}></img></Button>
           <Button onClick={() => screenChange('fifth')}><img src={screen5img}></img></Button>
         </ButtonGroup>
+        {expand}
         </div>
       </div>
       
@@ -102,12 +114,12 @@ export default function Home() {
       <Button className='vbutton'><img src={vMenu}></img></Button>
       <Button className='hbutton'><img src={hMenu}></img></Button>
       <div className='workstation'>
-
-        {visible === 1 && <Screen1App/>}
-        {visible === 2 && <Screen2App/>}
-        {visible === 3 && <Screen3App/>}
-        {visible === 4 && <Screen4App/>}
-        {visible === 5 && <Screen5App/>}
+        {visible === 0 && <ScreenHomeApp/>}
+        {visible === 1 && <Screen1App><div>dkfjlkd</div></Screen1App>}
+        {visible === 2 && <Screen2App></Screen2App>}
+        {visible === 3 && <Screen3App></Screen3App>}
+        {visible === 4 && <Screen4App></Screen4App>}
+        {visible === 5 && <Screen5App></Screen5App>}
       </div>
     </div>
     
