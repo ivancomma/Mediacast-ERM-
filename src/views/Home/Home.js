@@ -2,7 +2,8 @@ import React, {useState} from 'react';
 import $ from 'jquery';
 import { Link, useHistory } from 'react-router-dom';
 import { Button, ButtonGroup } from '@material-ui/core';
-
+import IconButton from '@material-ui/core/IconButton';
+import DeleteIcon from '@material-ui/icons/Delete';
 
 import { makeStyles } from '@material-ui/core/styles';
 import { Window } from '@progress/kendo-react-dialogs';
@@ -17,6 +18,7 @@ import Screen3App from '../Screen/Screen3.js';
 import Screen4App from '../Screen/Screen4.js';
 import Screen5App from '../Screen/Screen5.js';
 
+import screen0img from '../../asset/image/screen0.jpg';
 import screen1img from '../../asset/image/screen1.jpg';
 import screen2img from '../../asset/image/screen2.jpg';
 import screen3img from '../../asset/image/screen3.jpg';
@@ -24,6 +26,7 @@ import screen4img from '../../asset/image/screen4.jpg';
 import screen5img from '../../asset/image/screen5.jpg';
 import hMenu from '../../asset/image/hlayout.png';
 import vMenu from '../../asset/image/vlayout.png';
+import { SignalCellularConnectedNoInternet0Bar } from '@material-ui/icons';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -39,6 +42,7 @@ export default function Home() {
   const classes = useStyles();
   const [visible, setVisible] = useState(0);
   const [expand, setExpand] = useState();
+  const [screen, setScreen] = useState(<ScreenHomeApp/>);
   let treeData = 0;
   function handleClick(param) {
     console.log("aaaaaaa");
@@ -56,25 +60,57 @@ export default function Home() {
   }
   function screenChange(param) {
     $("#but_screen_hover").toggleClass("but_screen_hover");
+    if(param === 'home') {
+      setVisible(0);
+      setScreen(<ScreenHomeApp/>)
+    }
     if(param === 'first') {
         setVisible(1);
+        setScreen(<Screen1App/>)
     }
     else if(param === 'second') {
         setVisible(2);
+        setScreen(<Screen2App/>);
     }
     else if(param === 'third') {
       setVisible(3);
+      setScreen(<Screen3App/>);
     }
     else if(param == 'fourth') {
       setVisible(4);
+      setScreen(<Screen4App/>);
     }
     else if(param === 'fifth') {
       setVisible(5);
+      setScreen(<Screen5App/>);
     }
   }
   function changeExpandWindow(key){
     treeData = key;
     setExpand(<ExpandTreeApp data={key}/>);
+  }
+  function vbuttonhandleClick() {
+    if (visible === 0 ) {
+      setScreen(<ScreenHomeApp menu ={0}/>);
+    }
+    else if(visible === 1) {
+      console.log(222);
+      setScreen(<Screen1App menu = {1}/>);
+    }
+    else if(visible === 2) {
+      setScreen(<Screen2App menu = {2}/>);
+    }
+    else if(visible === 3 ) {
+      setScreen(<Screen3App menu = {3}/>);
+    }
+    else if (visible === 4 ) {
+      setScreen(<Screen4App menu = {4}/>);
+    }
+    else
+      setScreen(<Screen5App menu = {5}/>);
+  }
+  function hbuttonhandleClick() {
+
   }
   return (
     <div style={{ height: "100%" }}>
@@ -100,6 +136,7 @@ export default function Home() {
           variant="contained" color="primary"
           aria-label="contained primary button group"
           onClick={() => hoverChange}>
+          <Button onClick={() => screenChange('home')}><img src={screen0img}></img></Button>
           <Button onClick={() => screenChange('first')}><img src={screen1img}></img></Button>
           <Button onClick={() => screenChange('second')}><img src={screen2img}></img></Button>
           <Button onClick={() => screenChange('third')}><img src={screen3img}></img></Button>
@@ -109,17 +146,16 @@ export default function Home() {
         {expand}
         </div>
       </div>
+      <div style={{display:'flex',height:'100%',width:'100%'}}>
+        <div style={{maxWidth:'56px'}}>
+          <Button className='Btn'>Menu</Button>
+          <Button className='vbutton' onClick={() => vbuttonhandleClick()}><img src={vMenu}></img></Button>
+          <Button className='hbutton' onClick={() => hbuttonhandleClick()}><img src={hMenu}></img></Button>
+        </div>
       
-      <Button className='Btn'>Menu</Button>
-      <Button className='vbutton'><img src={vMenu}></img></Button>
-      <Button className='hbutton'><img src={hMenu}></img></Button>
-      <div className='workstation'>
-        {visible === 0 && <ScreenHomeApp/>}
-        {visible === 1 && <Screen1App><div>dkfjlkd</div></Screen1App>}
-        {visible === 2 && <Screen2App></Screen2App>}
-        {visible === 3 && <Screen3App></Screen3App>}
-        {visible === 4 && <Screen4App></Screen4App>}
-        {visible === 5 && <Screen5App></Screen5App>}
+        <div className='workstation'>
+           {screen}
+        </div>
       </div>
     </div>
     

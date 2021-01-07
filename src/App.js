@@ -3,7 +3,7 @@ import { createBrowserHistory} from "history";
 import {BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import Home from './views/Home/Home.js';
-import Next from './views/Next/Next.js';
+import Exam from './views/Exam/Exam.js';
 var hist = createBrowserHistory();
 
 function App() {
@@ -11,8 +11,8 @@ function App() {
     <Router>
       <Switch>
         <Route exact path = "/" component={Home}/>
-        <Route path = "/first" component={Next}/>
-        <Route path = "/screen" component={Next}/>
+        <Route path = "/first" component={Exam}/>
+        <Route path = "/screen" component={Exam}/>
       </Switch>
     </Router>
   );

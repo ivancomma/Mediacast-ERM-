@@ -1,5 +1,5 @@
 html, body, #root {
-    height: 100%;
+    height: 95%;
 }
 body {
     margin: 0 !important;
@@ -14,15 +14,17 @@ body {
     color:white !important;
     transform-origin:0 0;
     position: absolute;
-    top:84%;
-    left:-10%;
+    top:80%;
+    left:-11%;
+
 }
 .vbutton {
     color:white !important;
     transform-origin: 0 0;
-    position: absolute;;
-   top: 80%;
-    left:-145px;
+    position: absolute;
+    top: 80%;
+    left:-11%;
+
 }
 .Btn
  {  
@@ -56,9 +58,9 @@ body {
     border-color: rgb(14, 105, 241) rgb(14, 105, 241) transparent transparent ;
  }
  .workstation {
-     margin-top:-52px;
-     height: auto;
-     padding:0 20px 0 60px;
+     height: 100%;
+     width:100%;
+     padding:0 10px 0 0px;
  }
 
  

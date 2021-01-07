@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Window } from '@progress/kendo-react-dialogs';
 import BoxTreeContentApp from './BoxTreeContent.js';
 import { FlareSharp, FormatTextdirectionRToLRounded, TransferWithinAStationOutlined } from '@material-ui/icons';
-// import './ExpandTree.css';
+import './ExpandTree.css';
 class ExpandTreeApp extends React.Component {
     constructor(props) {
         super(props);
@@ -41,7 +41,7 @@ class ExpandTreeApp extends React.Component {
         return (
             <div className="pad10">
                 {/* <button className="k-button height99" onClick={this.toggleDialog}>Apps</button> */}
-                {this.state.visible && <Window onClose={this.toggleDialog} title={"App" + this.props.data} initialHeight={300} initialWidth={300} initialTop={600} initialLeft={1300}>
+                {this.state.visible && <Window onClose={this.toggleDialog} title={"App" + this.props.data} initialHeight={300} initialWidth={300}>
                     <div style={{ height: '100%', minWidth: '170px' }}>
                         <BoxTreeContentApp data={"treebox"} />
                     </div>
